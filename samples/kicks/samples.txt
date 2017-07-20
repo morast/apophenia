@@ -1,0 +1,6 @@
+Kick_002_Knock.wav
+Kick_003_Sensible.wav
+Kick_005_Deep.wav
+Kick_007_Noisy.wav
+Kick_008_Vinyl.wav
+Kick_009_Crust.wav

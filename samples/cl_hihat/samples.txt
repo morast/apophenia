@@ -1,0 +1,5 @@
+HiHat_Closed_002_Ozone.wav
+HiHat_Closed_003_909x.wav
+HiHat_Closed_004_Flat_Real.wav
+HiHat_Closed_013_Trash.wav
+samples.txt

@@ -1,0 +1,5 @@
+808_Bass_A_Knaw.wav
+808_Bass_A_Overdrive_.wav
+808_Bass_Deepish.wav
+808_Bass_Key_.wav
+samples.txt
