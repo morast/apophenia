@@ -1,8 +1,8 @@
-#N canvas 542 161 1351 662 10;
+#N canvas 14 105 1351 662 10;
 #X declare -path abstractions/;
 #X declare -path /home/morast/pd-externals/cyclone;
 #X declare -lib /home/morast/pd-externals/iemlib;
-#N canvas 50 96 1301 640 delset 0;
+#N canvas 48 98 1301 640 delset 1;
 #X obj 103 119 nbx 5 14 0 100 0 0 empty empty empty 0 -8 0 10 -262144
 -1 -1 0 256;
 #X obj 170 119 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
@@ -208,13 +208,10 @@
 #X obj 292 118 tgl 15 0 empty empty Ext 0 -7 0 10 -257985 -1 -1 0 1
 ;
 #X msg 232 62 140;
-#X obj 552 59 ctlin 20;
-#X floatatom 548 92 5 0 0 0 - - -, f 5;
-#X floatatom 604 90 5 0 0 0 - - -, f 5;
-#X obj 592 132 sel 127;
 #X obj 690 115 sel 127;
 #X obj 690 138 s manual-ticks;
 #X obj 690 91 ctlin 29;
+#X obj 486 57 r play;
 #X connect 0 0 2 0;
 #X connect 1 0 4 0;
 #X connect 2 0 3 0;
@@ -229,17 +226,14 @@
 #X connect 20 0 19 0;
 #X connect 21 0 9 0;
 #X connect 22 0 23 0;
-#X connect 22 0 25 0;
-#X connect 22 1 24 0;
+#X connect 24 0 22 0;
 #X connect 25 0 18 0;
-#X connect 26 0 27 0;
-#X connect 28 0 26 0;
 #X coords 0 -1 1 1 210 35 1 100 100;
 #X restore 5 4 pd delset;
 #X obj 7 298 clip~ -0.5 0.5;
 #X floatatom 46 267 5 0 0 0 - - -, f 5;
 #X obj 7 277 *~ 1;
-#N canvas 519 392 566 300 seqReceive 0;
+#N canvas 517 394 642 300 seqReceive 0;
 #X obj -19 359 outlet;
 #X obj 196 279 r sampler1-toggle-seq;
 #X obj 196 340 outlet;
@@ -253,7 +247,7 @@
 #X obj 35 178 spigot;
 #X obj 88 179 spigot;
 #X obj 141 179 spigot;
-#X obj 103 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
+#X obj 103 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
 1;
 #X obj 118 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
@@ -266,10 +260,13 @@
 #X obj 87 143 r sampler2-seq;
 #X obj 193 143 r sampler3-seq;
 #X obj 297 143 r sampler4-seq;
-#X obj 249 24 loadbang;
+#X obj 86 2 loadbang;
 #X obj -19 277 % 8;
 #X obj -19 247 +;
 #X floatatom 167 103 2 0 0 0 - - -, f 2;
+#X obj 247 20 r sampler1-seq-route;
+#X obj 251 49 route /sampler1 /sampler4 /sampler3 /sampler2, f 29
+;
 #X connect 1 0 3 0;
 #X connect 3 0 2 0;
 #X connect 4 0 9 0;
@@ -299,6 +296,11 @@
 #X connect 23 0 7 0;
 #X connect 24 0 23 0;
 #X connect 25 0 24 1;
+#X connect 26 0 27 0;
+#X connect 27 0 13 0;
+#X connect 27 1 14 0;
+#X connect 27 2 15 0;
+#X connect 27 3 16 0;
 #X coords 0 -1 1 1 85 20 2 100 100;
 #X restore 7 148 pd seqReceive;
 #X obj 577 181 polysampler bin;
@@ -333,7 +335,7 @@
 #X obj 142 178 spigot;
 #X obj 104 102 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
-#X obj 119 102 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
+#X obj 119 102 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
 1;
 #X obj 134 102 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
@@ -424,13 +426,13 @@
 #X obj 36 178 spigot;
 #X obj 89 179 spigot;
 #X obj 142 179 spigot;
-#X obj 104 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
+#X obj 104 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
 #X obj 119 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
-#X obj 134 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
+#X obj 134 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
-#X obj 149 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
+#X obj 149 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
 #X obj 89 54 unpack 0 0 0 0;
 #X obj 88 143 r sampler2-seq;
@@ -754,7 +756,7 @@
 #X obj 7 507 forceFeed;
 #X obj 6 464 catch~ forceFeed;
 #X obj 126 466 r forceFeed-ctl;
-#N canvas 586 275 777 443 input 0;
+#N canvas 584 277 777 443 input 1;
 #X obj 146 77 adc~ 2;
 #X obj 88 79 adc~ 1;
 #X obj 500 126 *~;
@@ -810,8 +812,6 @@
 #X obj 402 154 throw~ group4;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
-#X connect 2 0 47 0;
-#X connect 3 0 48 0;
 #X connect 8 0 46 0;
 #X connect 9 0 46 0;
 #X connect 10 0 12 0;
@@ -876,7 +876,7 @@
 #X connect 6 0 8 0;
 #X connect 7 0 6 0;
 #X restore 186 94 pd control;
-#N canvas 1048 298 566 300 seqReceive 0;
+#N canvas 799 300 566 300 seqReceive 1;
 #X obj -113 365 outlet;
 #X obj 102 346 outlet;
 #X msg 102 318 loop \$1;
@@ -894,13 +894,13 @@
 #X obj 36 178 spigot;
 #X obj 89 179 spigot;
 #X obj 142 179 spigot;
-#X obj 104 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
+#X obj 104 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
 1;
 #X obj 119 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
-#X obj 134 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
+#X obj 134 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
 1;
-#X obj 149 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 1
+#X obj 149 103 tgl 15 0 empty empty empty 17 7 0 10 -159808 -1 -1 0
 1;
 #X obj 89 54 unpack 0 0 0 0;
 #X obj 88 143 r sampler2-seq;
@@ -911,6 +911,9 @@
 #X obj -113 287 % 8;
 #X obj -113 257 +;
 #X floatatom 166 103 2 0 0 0 - - -, f 2;
+#X obj 247 20 r sampler1-seq-route;
+#X obj 251 49 route /sampler1 /sampler4 /sampler3 /sampler2, f 29
+;
 #X connect 2 0 1 0;
 #X connect 3 0 5 2;
 #X connect 3 0 10 0;
@@ -943,6 +946,11 @@
 #X connect 27 0 5 0;
 #X connect 28 0 27 0;
 #X connect 29 0 28 1;
+#X connect 30 0 31 0;
+#X connect 31 0 17 0;
+#X connect 31 1 18 0;
+#X connect 31 2 19 0;
+#X connect 31 3 20 0;
 #X coords 0 -1 1 1 83 20 2 100 100;
 #X restore 186 134 pd seqReceive;
 #X obj 185 260 throw~ group2;
@@ -1017,7 +1025,7 @@
 #X obj 241 105 random 100;
 #X obj 241 127 <;
 #X obj 107 107 hsl 70 15 0 127 0 0 empty empty Probability 4 8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 1600 1;
 #N canvas 3 78 1351 640 weightedrandom 0;
 #X obj 571 106 tabread randomness;
 #X obj 568 188 f;
@@ -1052,7 +1060,7 @@
 #X obj 372 262 t b f b f f;
 #N canvas 3 78 450 250 (subpatch) 0;
 #X array count 8 float 3;
-#A 0 19659 1941 2118 2771 9618 9455 3289 42;
+#A 0 20272 1998 2179 2843 9914 9756 3398 42;
 #X coords 0 100 8 0 200 140 1 0 0;
 #X restore 625 331 graph;
 #X obj 362 546 tabwrite count;
@@ -1131,9 +1139,9 @@
 #X obj 154 287 loadbang;
 #X msg 164 323 0.5;
 #X obj 106 146 hsl 93 15 0 1 0 0 empty empty Feedback 6 8 0 10 -262144
--1 -1 6400 1;
+-1 -1 7300 1;
 #X obj 106 128 hsl 93 15 0.1 50 0 0 empty empty Smear 6 8 0 10 -262144
--1 -1 0 1;
+-1 -1 9200 1;
 #X obj 185 107 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 241 62 spigot;
@@ -1246,7 +1254,7 @@
 #X obj -111 295 loadbang;
 #X msg 0 298 feedback \$1;
 #X obj 106 197 hsl 70 15 0 1 0 0 empty empty Feedback 4 8 0 10 -262144
--1 -1 1400 1;
+-1 -1 5400 1;
 #X obj 106 161 hsl 70 15 0 3000 0 0 empty empty HighRange 4 8 0 10
 -262144 -1 -1 0 1;
 #X obj 106 179 hsl 70 15 0 3000 0 0 empty empty LowRange 4 8 0 10 -262144
@@ -1305,7 +1313,7 @@
 #X connect 26 0 2 0;
 #X coords 0 -1 1 1 80 130 1 100 100;
 #X restore 320 479 pd freelay;
-#N canvas 159 775 450 300 control 1;
+#N canvas 157 84 450 300 control 0;
 #X obj 22 68 unpack f f f f;
 #X obj 22 145 s sampler1-timing;
 #X obj 22 38 r control1-seq;
@@ -17340,7 +17348,7 @@ it when reopening the patch or changing the page;
 #X obj 36 228 throw~ forceFeed;
 #X obj 35 205 *~;
 #X obj 105 116 hsl 60 15 0 4 0 0 empty empty feedback 2 8 0 10 -257985
--1 -1 2600 1;
+-1 -1 0 1;
 #X obj 85 93 inlet~;
 #X obj 69 252 *~;
 #X obj 105 135 hsl 60 15 0 4 0 0 empty empty delay 4 8 0 10 -257985
@@ -17349,7 +17357,7 @@ it when reopening the patch or changing the page;
 #X obj 265 230 *~;
 #X obj 266 253 throw~ delay2;
 #X obj 106 153 hsl 60 15 0 2 0 0 empty empty freelay 4 8 0 10 -257985
--1 -1 2900 1;
+-1 -1 0 1;
 #X obj 188 115 u_statesave send2-fb sends;
 #X obj 189 134 u_statesave send2-dl sends;
 #X obj 189 153 u_statesave send2-free sends;
@@ -17378,7 +17386,7 @@ it when reopening the patch or changing the page;
 #X obj 85 93 inlet~;
 #X obj 69 252 *~;
 #X obj 105 135 hsl 60 15 0 4 0 0 empty empty delay 4 8 0 10 -257985
--1 -1 0 1;
+-1 -1 4500 1;
 #X obj 70 272 throw~ delay;
 #X obj 265 230 *~;
 #X obj 266 253 throw~ delay2;
@@ -17451,6 +17459,21 @@ it when reopening the patch or changing the page;
 #X obj 397 74 seq2 control3;
 #X obj 185 74 seq2 control4;
 #X obj 577 65 seq2 control2;
+#N canvas 1 84 450 300 nanoktl 1;
+#X obj 248 188 s play;
+#X obj 248 94 sel 127;
+#X obj 248 72 ctlin 45 27;
+#X msg 248 115 1;
+#X obj 331 110 sel 127;
+#X msg 331 132 0;
+#X obj 331 72 ctlin 46 27;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
+#X connect 6 0 4 0;
+#X restore 872 273 pd nanoktl;
 #X connect 1 0 27 0;
 #X connect 1 0 10 0;
 #X connect 2 0 3 1;
